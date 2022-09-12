@@ -1,62 +1,6 @@
 <?php
 $path = "../config/connection.php";
 include "$path";
-
-    //Query Mca Student  count vehicle
-    $TotalMca ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='MCA' AND `Vechile_no` IS  NOT NULL ";
-    $resultMca =mysqli_query($conn , $TotalMca);
-    $mcaStudent;
-    if($resultMca->num_rows>0){
-        while($row =mysqli_fetch_array($resultMca)){
-            $mcaStudent = $row['total'];
-        }
-    }
-
-
-    //Query BCA Student  count vehicle
-    $TotalBca ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='BCA' AND `Vechile_no` IS  NOT NULL ";
-    $resultBca =mysqli_query($conn , $TotalBca);
-    $bcaStudent;
-    if($resultBca->num_rows>0){
-        while($row =mysqli_fetch_array($resultBca)){
-            $bcaStudent = $row['total'];
-        }
-    }
-
-    //query Teacher count vehicle
-    $TotalTeacher = "SELECT COUNT(`Id`) as total FROM `tbl_teacher` WHERE `Vehile_No` IS NOT Null";
-    $resultTeacher =mysqli_query($conn , $TotalTeacher);
-    $teacherCount;
-    if($resultTeacher->num_rows>0){
-        while($row =mysqli_fetch_array($resultTeacher)){
-            $teacherCount = $row['total'];
-        }
-    }
-
-     //Query MBA Student  count vehicle
-     $TotalMBA ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='MBA' AND `Vechile_no` IS  NOT NULL ";
-     $resultMBA  =mysqli_query($conn , $TotalMBA);
-     $MBAStudent;
-     if($resultMBA->num_rows>0){
-         while($row =mysqli_fetch_array($resultMBA )){
-             $MBAStudent = $row['total'];
-         }
-     }
-
-     //Query BBA Student  count vehicle
-     $TotalBBA ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='BBA' AND `Vechile_no` IS  NOT NULL ";
-     $resultBBA  =mysqli_query($conn , $TotalBBA);
-     $BBAStudent;
-     if($resultBBA->num_rows>0){
-         while($row =mysqli_fetch_array($resultBBA )){
-             $BBAStudent = $row['total'];
-         }
-     }
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -65,43 +9,51 @@ include "$path";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/Style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
-    <div class="container">
-
-        <div id="totalRegistration">
-            <canvas id="totalVehicle" ></canvas>
-        </div> 
+    <div class="row">
         
-        <div id="Week">
-            <canvas id="OneWeakVehicle" ></canvas>
+        <!-- sidebar container -->
+
+        <div class="col-3">
+            <div>check</div>
         </div>
+
+        <!-- chart container -->
+        <div class="ChartContainer col-8">
             
-        <div id="Today">
-            <canvas id="TodayVehicle" ></canvas>
+            <div id="totalRegistration">
+                <canvas id="totalVehicle" ></canvas>
+            </div> 
+            
+            <div id="Week">
+                <canvas id="OneWeakVehicle" ></canvas>
+            </div>
+                
+            <div id="Today">
+                <canvas id="TodayVehicle" ></canvas>
+            </div>
+
+            <div id="Yesterday">
+                <canvas id="YesterdayVehicle" ></canvas>
+            </div> 
         </div>
-
-        <div id="Yesterday">
-            <canvas id="YesterdayVehicle" ></canvas>
-        </div> 
-
-        
-
     </div>
- 
+    
     <script>
 
     // Total Registered Users Start--------------------
 
     //setup Block
-    const MCA  = <?php echo json_encode($mcaStudent); ?>;
-    const BCA  = <?php echo json_encode($bcaStudent); ?>;
-    const Teacher  = <?php echo json_encode($teacherCount); ?>;
-    const MBA  = <?php echo json_encode($MBAStudent); ?>;
-    const BBA  = <?php echo json_encode($BBAStudent); ?>;
+    // const MCA  = <?php /*echo json_encode($mcaStudent); */?>;
+    const MCA  = 50;
+    const BCA  = 60;
+    const Teacher  = 30;
+    const MBA  = 20;
+    const BBA  = 1;
     const TotalVehicle  =parseInt(MCA)  + parseInt(BCA)+ parseInt(Teacher)+ parseInt(MBA) + parseInt(BBA);
     const TotalRegistration =  {
         labels: ['Total Registered Users'],
@@ -298,5 +250,15 @@ include "$path";
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'
+
+                 //Query Mca Student  count vehicle
+    $TotalMca ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='MCA' AND `Vechile_no` IS  NOT NULL ";
+    $resultMca =mysqli_query($conn , $TotalMca);
+    $mcaStudent;
+    if($resultMca->num_rows>0){
+        while($row =mysqli_fetch_array($resultMca)){
+            $mcaStudent = $row['total'];
+        }
+    }
  -->
 </html>
