@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    *:before, *:after {
+        box-sizing: border-box;
+    }
+}
+body{
+    background: #ecf0f3;
+    
+}
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    row-gap: 10%;
+    column-gap: 5%;
+    flex-wrap: wrap;
+}
+#totalRegistration{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+#Today{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+#Yesterday{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+#Week{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+/* .login-div {
+    width:430px;
+    height: 700px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+  } */
+
+  
