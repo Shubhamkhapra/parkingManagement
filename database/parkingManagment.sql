@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2022 at 01:24 PM
+-- Generation Time: Sep 13, 2022 at 11:49 PM
 -- Server version: 8.0.28
 -- PHP Version: 8.1.9
 
@@ -57,6 +57,7 @@ INSERT INTO `tbl_admin` (`Id`, `Name`, `Email`, `Phone`, `Password`, `UserType`)
 
 CREATE TABLE `tbl_parking` (
   `id` int NOT NULL,
+  `Vehicle_Number` varchar(155) DEFAULT NULL,
   `Vehicle_Cat` varchar(100) DEFAULT NULL,
   `Rate` varchar(45) DEFAULT NULL,
   `In_Time` varchar(255) DEFAULT NULL,
@@ -74,7 +75,7 @@ CREATE TABLE `tbl_parking` (
 CREATE TABLE `tbl_vehicle_cat` (
   `id` int NOT NULL,
   `Name` varchar(100) NOT NULL,
-  `Rate` varchar(45) DEFAULT NULL,
+  `Rate` varchar(45) NOT NULL,
   `Active` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -83,8 +84,9 @@ CREATE TABLE `tbl_vehicle_cat` (
 --
 
 INSERT INTO `tbl_vehicle_cat` (`id`, `Name`, `Rate`, `Active`) VALUES
-(1, 'Two', NULL, 'Yes'),
-(2, 'Four', NULL, 'Yes');
+(1, 'Two', '50', 'Yes'),
+(2, 'Four', '100', 'Yes'),
+(3, 'Bycile', '15', 'Yes');
 
 --
 -- Indexes for dumped tables
@@ -129,7 +131,7 @@ ALTER TABLE `tbl_parking`
 -- AUTO_INCREMENT for table `tbl_vehicle_cat`
 --
 ALTER TABLE `tbl_vehicle_cat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
