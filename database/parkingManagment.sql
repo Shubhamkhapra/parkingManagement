@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2022 at 01:14 AM
+-- Generation Time: Sep 13, 2022 at 01:24 PM
 -- Server version: 8.0.28
 -- PHP Version: 8.1.9
 
@@ -57,35 +57,13 @@ INSERT INTO `tbl_admin` (`Id`, `Name`, `Email`, `Phone`, `Password`, `UserType`)
 
 CREATE TABLE `tbl_parking` (
   `id` int NOT NULL,
-  `Vehicle_Cat_ID` varchar(100) DEFAULT NULL,
-  `Rate_id` int DEFAULT NULL,
+  `Vehicle_Cat` varchar(100) DEFAULT NULL,
+  `Rate` varchar(45) DEFAULT NULL,
   `In_Time` varchar(255) DEFAULT NULL,
   `Out_Time` varchar(255) DEFAULT NULL,
   `Total_Time` varchar(255) DEFAULT NULL,
-  `Total_Amount` int DEFAULT NULL,
-  `Paid_Status` varchar(45) DEFAULT NULL
+  `Total_Amount` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_rate`
---
-
-CREATE TABLE `tbl_rate` (
-  `id` int NOT NULL,
-  `Vehicle_cat_ID` varchar(100) DEFAULT NULL,
-  `Rate` varchar(150) NOT NULL,
-  `Active` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `tbl_rate`
---
-
-INSERT INTO `tbl_rate` (`id`, `Vehicle_cat_ID`, `Rate`, `Active`) VALUES
-(1, 'Two', '50', 'Yes'),
-(2, 'Four', '100', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -96,6 +74,7 @@ INSERT INTO `tbl_rate` (`id`, `Vehicle_cat_ID`, `Rate`, `Active`) VALUES
 CREATE TABLE `tbl_vehicle_cat` (
   `id` int NOT NULL,
   `Name` varchar(100) NOT NULL,
+  `Rate` varchar(45) DEFAULT NULL,
   `Active` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -103,9 +82,9 @@ CREATE TABLE `tbl_vehicle_cat` (
 -- Dumping data for table `tbl_vehicle_cat`
 --
 
-INSERT INTO `tbl_vehicle_cat` (`id`, `Name`, `Active`) VALUES
-(1, 'Two', 'Yes'),
-(2, 'Four', 'Yes');
+INSERT INTO `tbl_vehicle_cat` (`id`, `Name`, `Rate`, `Active`) VALUES
+(1, 'Two', NULL, 'Yes'),
+(2, 'Four', NULL, 'Yes');
 
 --
 -- Indexes for dumped tables
@@ -122,13 +101,7 @@ ALTER TABLE `tbl_admin`
 --
 ALTER TABLE `tbl_parking`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tbl_parking_1_idx` (`Rate_id`);
-
---
--- Indexes for table `tbl_rate`
---
-ALTER TABLE `tbl_rate`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `fk_tbl_parking_1_idx` (`Vehicle_Cat`);
 
 --
 -- Indexes for table `tbl_vehicle_cat`
@@ -153,26 +126,10 @@ ALTER TABLE `tbl_parking`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_rate`
---
-ALTER TABLE `tbl_rate`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `tbl_vehicle_cat`
 --
 ALTER TABLE `tbl_vehicle_cat`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbl_parking`
---
-ALTER TABLE `tbl_parking`
-  ADD CONSTRAINT `fk_tbl_parking_1` FOREIGN KEY (`Rate_id`) REFERENCES `tbl_rate` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
