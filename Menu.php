@@ -35,9 +35,14 @@ include "$path";
         <!-- Sidebar Function -->
         <script>
         function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
+                // document.getElementById("mySidenav").style.width = "250px";
+                let nav = document.getElementById("mySidenav");
+                nav.style.display = "block";
+                nav.style.width="250px";
                 }
                 function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
+                // document.getElementById("mySidenav").style.width = "0";
+                let nav = document.getElementById("mySidenav");
+                  nav.style.display = "none";
                 }
         </script>
