@@ -1,27 +1,8 @@
+<!-- Menu bar import  -->
 <?php
-$path = "../config/connection.php";
+$path = "./Menu.php";
 include "$path";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/Style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div class="row">
-        
-        <!-- sidebar container -->
-
-        <div class="col-3">
-            <div>check</div>
-        </div>
-
         <!-- chart container -->
         <div class="ChartContainer col-8">
             
@@ -41,7 +22,6 @@ include "$path";
                 <canvas id="YesterdayVehicle" ></canvas>
             </div> 
         </div>
-    </div>
     
     <script>
 
@@ -223,7 +203,7 @@ include "$path";
 
    
     </script>
-</body>
+
 <!-- 
     $StudentData = "SELECT *  FROM `tbl_student`";
     $sql = "SELECT COUNT(Rollno) From tbl_student WHERE Course=\"MCA\" AND Vechile_no IS  NOT NULL;";
@@ -261,4 +241,9 @@ include "$path";
         }
     }
  -->
-</html>
+
+<!-- Footer bar import  -->
+<?php
+$path = "./footer.php";
+include "$path";
+?>
