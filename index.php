@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <script src="https://kit.fontawesome.com/ef417ecd31.js" crossorigin="anonymous"></script>
     <title>Index</title>
     <?php
-    include 'connection.php';
+    include './config/connection.php';
     $emailErr = $passErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
@@ -44,10 +44,12 @@
             echo "<script>
             window.alert('Verified');
             </script>";
+            header('location:'.$url.'dashboard.php');
         } else {
             echo "<script>
             window.alert('Invalid Password');
             </script>";
+            header('location:'.$url.'index.php');
         }
     }
     ?>
