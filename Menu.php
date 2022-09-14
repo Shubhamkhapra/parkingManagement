@@ -25,10 +25,19 @@ include "$path";
         <!-- Side bar -->
         <div class="row">
             <div id="mySidenav" class="sidenav col-3">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
                 <a href="<?php echo $url; ?>dashboard.php">Dashboard</a>
+
+                <a href="<?php echo $url; ?>add_user.php">Add User</a>
+
+                <a href="<?php echo $url; ?>manage_user.php">Manage User's</a>
+
                 <a href="<?php echo $url; ?>add_category.php">Add Category</a>
-                <a href="<?php echo $url; ?>manage_category.php">Manage Category</a>
+
+                <a href="<?php echo $url; ?>manage_category.php">Manage category</a>
+
             </div>
             <span class="menu" style="font-size:30px; cursor:pointer " onclick="openNav()">&#9776; </span>
         
