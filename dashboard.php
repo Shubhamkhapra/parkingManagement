@@ -3,9 +3,73 @@
 $path = "./Menu.php";
 include "$path";
 ?>
+        <!-- Get data from tables   start-->
+        <?php
+        // -----------Today chart Start 
+        
+        date_default_timezone_set('Asia/Kolkata');
+        $date = date('20y-m-d'); //get today 
+        // echo $date;
+        $TodayQ = "SELECT * FROM `tbl_parking` WHERE In_Time  like  '$date%';";
+        $TodayR = mysqli_query($conn , $TodayQ);
+        $Today=0; $Today_Veh=array();
+        if($TodayR->num_rows>0){
+            while($row= mysqli_fetch_assoc($TodayR)){
+                $Today++;
+                $Today_Veh[] = $row['Vehicle_Cat'];
+            }
+        }else
+            {
+                echo "<script> alert (' No vehicle Park today')</script>";
+                $Today = 0;
+                $Today_Veh[] = 0;
+            }
+        $Today_Veh_cat = array();
+        // $Today_Veh_cat[] = array_unique($Today_Veh);
+        $Today_Veh_cat = array_count_values($Today_Veh);
+        $Today_Veh_cat_labels= array() ; $Today_Veh_cat_values = array();
+        foreach($Today_Veh_cat as $x => $x_value) {
+            $Today_Veh_cat_labels[] = $x;
+            $Today_Veh_cat_values[] = $x_value;
+          }
+
+        
+        // -------------Today chart End 
+
+        //----------------------------YesterDay Chart Start
+        $YesterdayDate= date("Y-m-d", strtotime("yesterday")); 
+        $YesterdayQ = "SELECT * FROM `tbl_parking` WHERE In_Time  like  '$YesterdayDate%';";
+        $YesterdayR = mysqli_query($conn , $YesterdayQ);
+        $Yesterday=0; $Yesterday_Veh=array();
+        if($YesterdayR->num_rows>0){
+            while($row= mysqli_fetch_assoc($YesterdayR)){
+                $Yesterday++;
+                $Yesterday_Veh[] = $row['Vehicle_Cat'];
+            }
+        }else
+            {
+                echo "<script> alert (' No vehicle Park Yesterday')</script>";
+                $Yesterday = 0;
+                $Yesterday_Veh[] = 0;
+            }
+        $Yesterday_Veh_cat = array();
+        // $Today_Veh_cat[] = array_unique($Today_Veh);
+        $Yesterday_Veh_cat = array_count_values($Yesterday_Veh);
+        $Yesterday_Veh_cat_labels= array() ; $Yesterday_Veh_cat_values = array();
+        foreach($Yesterday_Veh_cat as $x => $x_value) {
+            $Yesterday_Veh_cat_labels[] = $x;
+            $Yesterday_Veh_cat_values[] = $x_value;
+          }
+        //--------------------YesterDay Chart End
+
+        ?>
+        <!-- Get data from tables   End-->
+
         <!-- chart container -->
         <div class="ChartContainer col-8">
-            
+            <div style="text-align: center;">
+                <!-- <?php print_r($Today_Veh_cat_labels); ?> -->
+            </div>
             <div id="totalRegistration">
                 <canvas id="totalVehicle" ></canvas>
             </div> 
@@ -15,10 +79,12 @@ include "$path";
             </div>
                 
             <div id="Today">
+                <h5 style="text-align: center;" class="mt-2 mb-2">Today Vehicle Details</h5>
                 <canvas id="TodayVehicle" ></canvas>
             </div>
 
             <div id="Yesterday">
+                <h5 style="text-align: center;" class="mt-2 mb-2">Yesterday Vehicle Details</h5>
                 <canvas id="YesterdayVehicle" ></canvas>
             </div> 
         </div>
@@ -36,7 +102,7 @@ include "$path";
     const BBA  = 1;
     const TotalVehicle  =parseInt(MCA)  + parseInt(BCA)+ parseInt(Teacher)+ parseInt(MBA) + parseInt(BBA);
     const TotalRegistration =  {
-        labels: ['Total Registered Users'],
+        labels: ['Total Profit'],
         datasets: [{
             // Total student
             label: 'Total Vehicle',
@@ -145,39 +211,62 @@ include "$path";
 
     // Today Vehicle Entry Start --------------------------
     //setup Block
+    const TodayTotal  = <?php echo json_encode($Today); ?>;
+    let TodayLabels  = <?php echo json_encode($Today_Veh_cat_labels); ?>;
+    TodayLabels = TodayLabels.toString();
+    TodayLabels = TodayLabels.concat(",","Total Vehicles");
+    TodayLabels = TodayLabels.split(",");
+   
+    let TodayData  = <?php echo json_encode($Today_Veh_cat_values); ?>;
+    TodayData = TodayData.toString();
+    TodayData = TodayData.concat(",",TodayTotal);
+    TodayData = TodayData.split(",");
+   
     const TodayReport = {
-        labels: ['Red','Green','Yellow','Grey','Blue'],
+        labels: TodayLabels,
         datasets: [{
-        label: 'My First Dataset',
-        data: [11, 16, 7, 3, 14],
+        label: 'Today Vehicle',
+        data: TodayData,
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(0, 146, 110)'
         ]
+        
         }]
         };
-    //config Block
-    const configTodayReport = {
-        type: 'polarArea',
-        data: TodayReport,
-        options: {}
-    };
-    //Render Block
-    const TodayVehicle = new Chart(
-        document.getElementById('TodayVehicle'),configTodayReport
-    );
-    // Today Vehicle Entry End --------------------------
+        //config Block
+        const configTodayReport = {
+            type: 'polarArea',
+            data: TodayReport,
+            options: {
+
+            }
+        };
+        //Render Block
+        
+        const TodayVehicle = new Chart(
+            document.getElementById('TodayVehicle'),configTodayReport
+            );
+        // Today Vehicle Entry End --------------------------
+            
 
     // Yesterday Vehicle Entry Start --------------------------
-    //setup Block
+        const YesterdayTotal  = <?php echo json_encode($Yesterday); ?>;
+        let YesterdayLabels  = <?php echo json_encode($Yesterday_Veh_cat_labels); ?>;
+        YesterdayLabels = YesterdayLabels.toString();
+        YesterdayLabels = YesterdayLabels.concat(",","Total Vehicles");
+        YesterdayLabels = YesterdayLabels.split(",");
+        let YesterdayData  = <?php echo json_encode($Yesterday_Veh_cat_values); ?>;
+        YesterdayData = YesterdayData.toString();
+        YesterdayData = YesterdayData.concat(",",YesterdayTotal);
+        YesterdayData = YesterdayData.split(",");
+            //setup Block
     const YesterdayReport = {
-        labels: ['Red','Blue','Yellow'],
+        labels: YesterdayLabels,
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Yesterday Vehicle Details',
+            data: YesterdayData,
             backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',

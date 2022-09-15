@@ -60,7 +60,7 @@
         <form method="post" autocomplete="off" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="logo">
                 <div class="logoimage">
-                    <img src="logo.png" alt="Parking Logo">
+                    <img src="./images/loggo.jpeg" alt="Parking Logo">
                 </div>
             </div>
             <div class="title">Index</div>
