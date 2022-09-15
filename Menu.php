@@ -23,7 +23,7 @@ include "$path";
 </head>
 <body>
         <!-- Side bar -->
-        <div class="row">
+        <div class="row col-12">
             <div id="mySidenav" class="sidenav col-3">
                 
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -39,7 +39,9 @@ include "$path";
                 <a href="<?php echo $url; ?>manage_category.php">Manage category</a>
 
             </div>
-            <span class="menu" style="font-size:30px; cursor:pointer " onclick="openNav()">&#9776; </span>
+            <div class="btn_style">
+              <span class="menu" style="font-size:30px; cursor:pointer " onclick="openNav()">&#9776; </span>
+            </div>
         
         <!-- Sidebar Function -->
         <script>

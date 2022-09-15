@@ -65,7 +65,7 @@
         <!--------Div For logo ------>
             <div class="logo">
                 <div class="logoimage">
-                    <img src="./images/loggo.jpeg" alt="Parking Logo">
+                    <img src="./images/LOGGGO.jpeg" alt="Parking Logo">
                 </div>
             </div>
             <!------Title -------->

@@ -9,7 +9,6 @@ include "$path";
         
         date_default_timezone_set('Asia/Kolkata');
         $date = date('20y-m-d'); //get today 
-        // echo $date;
         $TodayQ = "SELECT * FROM `tbl_parking` WHERE In_Time  like  '$date%';";
         $TodayR = mysqli_query($conn , $TodayQ);
         $Today=0; $Today_Veh=array();
@@ -28,10 +27,12 @@ include "$path";
         // $Today_Veh_cat[] = array_unique($Today_Veh);
         $Today_Veh_cat = array_count_values($Today_Veh);
         $Today_Veh_cat_labels= array() ; $Today_Veh_cat_values = array();
+        
         foreach($Today_Veh_cat as $x => $x_value) {
             $Today_Veh_cat_labels[] = $x;
             $Today_Veh_cat_values[] = $x_value;
           }
+
 
         
         // -------------Today chart End 
@@ -60,21 +61,80 @@ include "$path";
             $Yesterday_Veh_cat_labels[] = $x;
             $Yesterday_Veh_cat_values[] = $x_value;
           }
+          
         //--------------------YesterDay Chart End
+
+        
+        
+        // ------------------income details start
+
+        // Vehicle Category label make
+        $veh_labels = "SELECT * FROM `tbl_vehicle_cat`";
+        $veh_labelsQ = mysqli_query($conn,$veh_labels);
+        $veh_labels_cat = array();
+        if($veh_labelsQ->num_rows>0){
+            while($row = mysqli_fetch_array($veh_labelsQ)){
+                $veh_labels_cat[] = $row['Name'];
+            }
+        }else{
+            $veh_labels_cat = 0;
+        }
+
+        //income array vehicle wise
+        $veh_labels_value = array();
+        foreach($veh_labels_cat as $x=> $x_value){
+            $TotalIncomeQ = "SELECT sum(`Total_Amount`) as `TotalIncome` FROM `tbl_parking` WHERE `Vehicle_Cat` = '$x_value';";
+            $TotalIncomeR = mysqli_query($conn , $TotalIncomeQ);
+            if($TotalIncomeR->num_rows>0){
+                    while($row = mysqli_fetch_array($TotalIncomeR)){
+                        $veh_labels_value[]= $row['TotalIncome'];
+                    }
+                }else{
+                    $veh_labels_value[] = 0;
+                }
+        }
+
+        // ------------------income details End
+        
+        //-------------Week report Start
+        $firstday = date('Y-m-d', strtotime("sunday -1 week"));
+        $lastday = date('d-m-Y', strtotime("sunday 0 week"));
+        $begin = new DateTime( $firstday );
+        $end   = new DateTime( $lastday);
+        $days = array();
+        $daysName = array();
+        for($i = $begin; $i <= $end; $i->modify('+1 day')){
+            $days[] = $i->format("Y-m-d");
+            $daysName[] = $i->format("l");
+        }
+        $weekAmount = array();
+        foreach($days as $d){ //w :- week d:- date R:- result
+            $w = "SELECT sum(`Total_Amount`)as `Total` FROM `tbl_parking` WHERE `In_Time` like '$d%';";
+            $wR = mysqli_query($conn , $w);
+            if($wR->num_rows>0){
+                while($row = mysqli_fetch_array($wR)){
+                    $weekAmount[] = $row['Total'];
+                }
+            }else{
+                $weekAmount[]=0;
+            }
+        }
+        //-------------Week report End
+
 
         ?>
         <!-- Get data from tables   End-->
 
         <!-- chart container -->
-        <div class="ChartContainer col-8">
-            <div style="text-align: center;">
-                <!-- <?php print_r($Today_Veh_cat_labels); ?> -->
-            </div>
+        <div class="ChartContainer col-8 ">
+
             <div id="totalRegistration">
+                <h5 style="text-align: center;" class="mt-2 mb-2">Income 2022</h5>
                 <canvas id="totalVehicle" ></canvas>
             </div> 
             
             <div id="Week">
+            <h5 style="text-align: center;" class="mt-2 mb-2">Week Income Details</h5>
                 <canvas id="OneWeakVehicle" ></canvas>
             </div>
                 
@@ -91,67 +151,40 @@ include "$path";
     
     <script>
 
-    // Total Registered Users Start--------------------
+    // Total Income 2022 Start--------------------
 
     //setup Block
-    // const MCA  = <?php /*echo json_encode($mcaStudent); */?>;
-    const MCA  = 50;
-    const BCA  = 60;
-    const Teacher  = 30;
-    const MBA  = 20;
-    const BBA  = 1;
-    const TotalVehicle  =parseInt(MCA)  + parseInt(BCA)+ parseInt(Teacher)+ parseInt(MBA) + parseInt(BBA);
+    let AllIncome  = <?php echo json_encode($veh_labels_value); ?>;
+    AllIncome = AllIncome.toString();
+    AllIncome = AllIncome.split(",");
+    var sum= 0;
+    AllIncome.forEach(x=>{
+        sum +=Number(x);
+    });
+    AllIncome.push(sum);
+    
+    let AllLabels  = <?php echo json_encode($veh_labels_cat); ?>;
+    AllLabels = AllLabels.toString();
+    AllLabels = AllLabels.concat(",","Total Income");
+    AllLabels = AllLabels.split(",");
+   
+
     const TotalRegistration =  {
-        labels: ['Total Profit'],
+        labels: AllLabels,
         datasets: [{
-            // Total student
-            label: 'Total Vehicle',
-            data: [TotalVehicle],
-            backgroundColor: ' rgba(255, 241, 46, 0.381)',
-            borderColor: ' rgba(255, 241, 46, 0.381)',
-            borderWidth: 1
-        },{
-            // MCA student
-            label: 'MCA',
-            data: [MCA],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        },{
-            // BCA Student 
-        label: 'BCA',
-            data: [BCA],
-            backgroundColor: 
-                'rgba(54, 162, 235, 0.2)',
-            borderColor:
-                'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        },{
-            //MBA Students
-            label: 'MBA',
-            data: [MBA],
-            backgroundColor: 
-                'rgba(153, 102, 255, 0.2)',
-            borderColor:
-                'rgba(153, 102, 255, 0.2)',
-            borderWidth: 1
-        },{
-            //BBA Students
-            label: 'BBA',
-            data: [BBA],
-            backgroundColor: 
+            // Total 
+            label: "Income",
+            data: AllIncome,
+            backgroundColor: ['rgba(255, 99, 132, 1)',
+            'rgba(153, 102, 255, 0.2)',
                 'rgba(146, 0, 122, 0.384)',
-            borderColor:
+                'rgba(0, 146, 110, 0.384)',
+                'rgba(54, 162, 235, 1)'],
+            borderColor: ['rgba(255, 99, 132, 1)',
+            'rgba(153, 102, 255, 0.2)',
                 'rgba(146, 0, 122, 0.384)',
-            borderWidth: 1
-        },{
-            //Teachers
-            label: 'Teacher',
-            data: [Teacher],
-            backgroundColor: 
-            'rgba(0, 146, 110, 0.384)',
-            borderColor:
-            'rgba(0, 146, 110, 0.384)',
+                'rgba(0, 146, 110, 0.384)',
+                'rgba(54, 162, 235, 1)'],
             borderWidth: 1
         }
     ]
@@ -164,8 +197,7 @@ include "$path";
             scales: {
                 y: {
                     beginAtZero: true,
-                    min:0,
-                    max : 240
+                    max : 3000
                 },
                 x:{
                     gridLines:{
@@ -182,16 +214,23 @@ include "$path";
     );
 
 
-    // Total Registered User  End--------------------
+    // Total Income  End--------------------
 
      // One Weak Vehicle Entry Start --------------------------
+     let weekLabels =  <?php echo json_encode($daysName); ?>;
+    weekLabels.splice(-1);
+    
+     let weekAmount = <?php echo json_encode($weekAmount); ?>;
+     weekAmount.pop();
+     
     //setup Block
-    const labels = ['JAN','FEB','MARCH','AP', 'JUN', 'JUL'];
+    // const labels = ['Mon','Tue','Wed','Thurs', 'Fri', 'Sat', 'Sun'];
+    const labels = weekLabels;
     const OneWeakReport = {
         labels: labels,
         datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            label: 'Week Details',
+            data: weekAmount,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
@@ -201,6 +240,13 @@ include "$path";
     const configOneWeakReport = {
         type: 'line',
         data: OneWeakReport,
+        options: {
+            scales: {
+                y: {
+                        beginAtZero: true
+                }
+            }
+        }
     };
     //Render Block
     const OneWeakVehicle = new Chart(
@@ -218,6 +264,7 @@ include "$path";
     TodayLabels = TodayLabels.split(",");
    
     let TodayData  = <?php echo json_encode($Today_Veh_cat_values); ?>;
+    console.log(TodayData);
     TodayData = TodayData.toString();
     TodayData = TodayData.concat(",",TodayTotal);
     TodayData = TodayData.split(",");
@@ -287,49 +334,7 @@ include "$path";
     // Yesterday Vehicle Entry End --------------------------
     
    
-
-
-
-   
     </script>
-
-<!-- 
-    $StudentData = "SELECT *  FROM `tbl_student`";
-    $sql = "SELECT COUNT(Rollno) From tbl_student WHERE Course=\"MCA\" AND Vechile_no IS  NOT NULL;";
-    $resultStudent =mysqli_query($conn , $StudentData);
-    $Rollno = array(); $Course =  array(); $Semester =  array(); 
-    $Vechile_cat = array(); $Vechile_no = array();
-
-    while($row = mysqli_fetch_array($resultStudent)){
-        $Rollno[] = $row['Rollno'];
-        $Course[] = $row['Course'];
-        $Semester[] = $row['Semester'];
-        $Vechile_cat[] = $row['Vechile_cat'];
-        $Vechile_no[] = $row['Vechile_no'];
-    }
-
-    $data = array();
-    foreach($resultStudent as $row) {
-        $data[] = $row;
-    }
-    json_encode($data);
-    'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-
-                 //Query Mca Student  count vehicle
-    $TotalMca ="SELECT COUNT(`Rollno`) as `total`  From `tbl_student` WHERE `Course`='MCA' AND `Vechile_no` IS  NOT NULL ";
-    $resultMca =mysqli_query($conn , $TotalMca);
-    $mcaStudent;
-    if($resultMca->num_rows>0){
-        while($row =mysqli_fetch_array($resultMca)){
-            $mcaStudent = $row['total'];
-        }
-    }
- -->
 
 <!-- Footer bar import  -->
 <?php

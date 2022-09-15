@@ -93,7 +93,11 @@ include "$path";
     
     
     <section class="login_div">
-        <div class="logo"></div>
+        <div class="logo">
+        <div class="logoimage">
+                    <img src="./images/LOGGGO.jpeg" alt="Parking Logo">
+                </div>
+        </div>
             <form  method="POST" autocomplete="off">
                 <div class="fields">
                     <div class="form">
