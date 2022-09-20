@@ -1,3 +1,33 @@
+<?php
+
+include './config/connection.php'; 
+
+
+if (isset($_SESSION['login'])) {
+   
+  
+    unset($_SESSION["login"]);
+}
+
+if(isset($_SESSION['UserType']))
+{
+  
+  $check = $_SESSION['UserType'];
+  if($check == "Regular")
+  header("location:".$url."token.php");
+}
+
+if(isset($_SESSION['UserType']))
+{
+  
+  $check = $_SESSION['UserType'];
+  if($check == "Admin")
+  header("location:".$url."dashboard.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +40,7 @@
     <title>Login</title>
     <!----PHP Connectivity ----->
     <?php
-    include './config/connection.php';  //connection file
+     //connection file
     $emailErr = $passErr = "";
     //Validations for input fields
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -44,10 +74,23 @@
         $result = mysqli_query($conn, $q);
         $row = mysqli_fetch_array($result);
         if ($row[4] == $pass) {
-            echo "<script>
-            window.alert('Verified');
-            </script>";
-            header('location:'.$url.'dashboard.php');
+            if($row['UserType'] == 'Admin'){
+                $_SESSION['login'] = "<div class='text-success'> Login Successful</div>";
+                $_SESSION["UserType"] = $row['UserType'];
+                $_SESSION['user'] = $row['Name'];
+                header("location:".$url."dashboard.php");	
+            }
+
+            if($row['UserType'] == 'Regular'){
+                $_SESSION['login'] = "<div class='text-success'> Login Successful</div>";
+                $_SESSION["UserType"] = $row['UserType'];
+                $_SESSION['user'] = $row['Name'];
+                header("location:".$url."token.php");	
+            }
+            // echo "<script>
+            // window.alert('Verified');
+            // </script>";
+            
         } else {
             echo "<script>
             window.alert('Invalid Password');

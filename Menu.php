@@ -1,6 +1,16 @@
 <?php
 $path = "config/connection.php";
 include "$path";
+
+if(!isset($_SESSION['user']) & !isset($_SESSION['UserType']))  //if user session is not set
+{
+   //user is not logged in  redirect login page
+   $_SESSION['no-login-message']="<div class='error text-center'> Please Login</div>";
+   header("location:".$url.'index.php'); 
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +27,7 @@ include "$path";
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style1.css" />
   <!-- chart js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
@@ -27,8 +38,14 @@ include "$path";
             <div id="mySidenav" class="sidenav col-3">
                 
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+                <a href="<?php  echo $url; ?>dashboard.php">Dashboard</a>
 
-                <a href="<?php echo $url; ?>dashboard.php">Dashboard</a>
+                <a href="<?php echo $url; ?>token.php">Token</a>
+
+                <a href="<?php echo $url; ?>search.php">Checkout </a>
+
+                <a href="<?php echo $url; ?>display.php"> All Vehicles </a>
 
                 <a href="<?php echo $url; ?>add_user.php">Add User</a>
 
@@ -37,6 +54,8 @@ include "$path";
                 <a href="<?php echo $url; ?>add_category.php">Add Category</a>
 
                 <a href="<?php echo $url; ?>manage_category.php">Manage category</a>
+
+                <a href="<?php echo $url; ?>logout.php">Logout</a>
 
             </div>
             <div class="btn_style">

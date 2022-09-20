@@ -1,15 +1,21 @@
 <?php
 
 //start session
-// session_start();
+session_start();
 
 
 //create constants to store Non repeating values
-$dsn = 'localhost:3306';
-$user = 'shubham';
-$password = 'Shubham21@';
-$DB_NAME_MY = 'parkingManagment';
-$url = "http://myphp.com/parkingManagement/";
+// $dsn = 'localhost:3306';
+// $user = 'shubham';
+// $password = 'Shubham21@';
+// $DB_NAME_MY = 'parkingManagment';
+// $url = "http://myphp.com/parkingManagement/";
+
+$dsn = 'localhost';
+$user = 'id19568548_team2';
+$password = 'Thecodeofduty2@';
+$DB_NAME_MY = 'id19568548_parkingmanagement';
+$url = "https://parkingmanagementthecodeofduty.000webhostapp.com/";
 $conn = mysqli_connect($dsn, $user, $password) ;
 	if (mysqli_connect_errno())
 		{

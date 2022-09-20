@@ -2,6 +2,14 @@
 <?php
 $path = "./Menu.php";
 include "$path";
+
+if(isset($_SESSION['UserType']))
+  {
+    
+    $check = $_SESSION['UserType'];
+    if($check == "Regular")
+    header("location:".$url."token.php");
+  }
 ?>
 
 <!-- update vehicle category -->
