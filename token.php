@@ -31,7 +31,7 @@ include "$path";
       }
 ?>
   
-<div class="login-div" style="margin:50px 100px 50px 670px;">
+<div class="vehicle_cat">
       <div class="logo logoimage">
         <img src="./images/LOGGGO.jpeg" alt="image" id="image">
       </div>

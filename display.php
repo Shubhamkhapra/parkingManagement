@@ -3,6 +3,26 @@
 $path = "./Menu.php";
 include "$path";
 ?>
+
+<!-- delete Query -->
+
+<?php
+
+    if(isset($_GET['deletedid'])){
+        $id=$_GET['deletedid'];
+
+        $sql="delete from `tbl_parking` where id=$id";
+        $result=mysqli_query($conn,$sql);
+
+        if($result){
+            header('location:display.php');
+        }else{
+            die(mysqli_error($conn));
+        }
+    }
+    ?>
+
+
 <!-- update vehicle category -->
 <div class="vehicle_cat_update">
   
@@ -16,6 +36,7 @@ include "$path";
                 <th> Vehicle Number </th>
                 <th> Rate </th>
                 <th> Total Time </th>
+                <th> Action </th>
               </tr>
           <?php
             
@@ -37,6 +58,11 @@ include "$path";
                 <td><?php echo @$Vehicle_Number ?></td>
                 <td><?php echo @$Rate ?></td>
                 <td><?php echo @$Total_Time ?></td>
+                <td>
+                    <a href="display.php?deletedid=<?php echo $id ?>" onclick="myalert()" class="text-danger"> <span class="material-symbols-outlined">
+                                delete
+                                </span></a>
+                </td>
                       </tr>
                      <?php
 
@@ -46,6 +72,13 @@ include "$path";
                       
         </table>
     </div>
+     <script>
+    function myalert(){
+        if(confirm("Do You Really Want To Delete?") == true){
+            alert("Data deleted");
+        }
+    }
+</script>
 
     <?php
 $path = "./footer.php";
