@@ -35,6 +35,7 @@ include "$path";
         <table id="tabledata" class=" table table-striped table-hover mt-5">
             <tr class="text-black text-center bg_color">
                 <th> Id </th>
+                <th> Token No </th>
                 <th> Vehicle Number </th>
                 <th> Rate </th>
                 <th> Total Time </th>
@@ -46,16 +47,18 @@ include "$path";
             $sql = "select * from `tbl_parking`";
 
             $result = mysqli_query($conn,$sql);
-
+             $count =0;
             if($result){
               while($row=mysqli_fetch_assoc($result)){
                 $id=$row['id'];
                 $Vehicle_Number=$row['Vehicle_Number'];
                 $Rate=$row['Rate'];
                 $Total_Time=$row['Total_Time'];
+                  $count ++;
                 ?>
               
               <tr class="text-center">
+                  <td><?php echo $count; ?></td>
                 <td><?php echo @$id ?></td>
                 <td><?php echo @$Vehicle_Number ?></td>
                 <td><?php echo @$Rate ?></td>
