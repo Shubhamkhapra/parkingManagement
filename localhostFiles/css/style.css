@@ -1,0 +1,477 @@
+/* universal  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #ecf0f3;
+}
+
+.bg_color{
+  background: #ecf0f3;
+}
+
+/*Menu bar and side bar Styles start  */
+.sidenav{
+  display: flex;
+  flex-direction: column;
+  background: #ecf0f3;
+  height: 800px;
+  width: 18%;
+  position: fixed;
+  /* border-radius: 40px; */
+  box-shadow: 13px 13px 20px #cdced1,
+              -13px -13px 20px #ffffff;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    transition: 0.3s;
+  }
+.closebtn, .menu{
+  display: none;
+}
+
+/*Menu bar and side bar Styles End  */
+
+
+
+/* Dashboard Chart Styles start */
+.ChartContainer{
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    padding-left: 23%;
+    display: flex;
+    flex-direction: row;
+    row-gap: 10%;
+    column-gap: 8%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+#totalRegistration{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+#Today{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+#Yesterday{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+#Week{
+    width: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+/* Login div  start*/
+.login_div{
+  margin: 4% 45%;
+  width:430px;
+  padding:35px;
+  border-radius:40px ;
+  background-color: #ecf0f3;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+}
+.form{
+  margin-bottom: 20px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+}
+.input{
+  border:none;
+  outline:none;
+  background: none;
+  font-size: 18px;
+  color:#555;
+  padding:20px 10px 20px 5px;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow:
+      /* logo shadow */
+      0px 0px 2px #5f5f5f,
+      /* offset */
+      0px 0px 0px 5px #ecf0f3,
+      /*bottom right */
+      8px 8px 15px #a7aaaf,
+      /* top left */
+      -8px -8px 15px #ffffff;
+
+}
+
+.logoimage img {
+  width: 100%;
+  height: 100px;
+  border-radius: 50px;
+}
+
+/* Login div  End*/
+
+
+/* Add vehicle category start */
+.vehicle_cat {
+    margin: 4% 45%;
+    width:430px;
+    /* height: 600px; */
+    height: 100vh;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+  }
+
+#title{
+    text-align: center;
+  font-size: 28px;
+  padding-top: 24px;
+  letter-spacing: 0.5px;
+}
+
+.fields {
+    width: 100%;
+    padding: 75px 5px 5px 5px;
+  }
+.fields input {
+    border: none;
+    outline:none;
+    background: none;
+    font-size: 18px;
+    color: #555;
+    padding:20px 10px 20px 5px;
+  }
+.veh_Type {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1,
+                inset -8px -8px 8px #ffffff;
+  }
+.Status{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Status input{
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+
+.signin-button {
+    outline: none;
+    border:none;
+    cursor: pointer;
+    width:100%;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color:#fff;
+    text-align: center;
+    background: #24cfaa;
+    box-shadow: 3px 3px 8px #b1b1b1,
+                -3px -3px 8px #ffffff;
+    transition: 0.5s;
+  }
+  .signin-button:hover {
+    background:#2fdbb6;
+  }
+  .signin-button:active {
+    background:#1da88a;
+  }
+  .link {
+    padding-top: 20px;
+    text-align: center;
+  }
+  .link a {
+    text-decoration: none;
+    color:#aaa;
+    font-size: 15px;
+  }
+
+/* Add vehicle category End */
+
+/* Update vehicle category start */
+.vehicle_cat_update{
+  margin: 4% 30%;
+    width:830px;
+    /* height: 600px; */
+    height: 100vh;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+/* Update vehicle category end */
+
+
+/* Footer styles  */
+  .footercontent{
+    /* position: fixed; */
+   left: 0;
+   bottom: 0;
+    width: 80.8%;
+    margin-left: 19.1%;
+    height: auto;
+    text-align: center;
+    padding: 23px 13px 1px 3px;
+    color: black;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}
+
+
+/* Media Query  */
+@media(min-width:1240px){
+  .ChartContainer{
+    column-gap: 50px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .footercontent{
+    width: 100%;
+    margin-left: 0;
+  }
+  .vehicle_cat_update{
+    height: auto;
+  }
+  .vehicle_cat{
+    height: auto;
+  }
+  
+}
+
+@media(max-width:1240px){
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 15px;}
+  .sidenav{
+    width:15%;
+  }
+  #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .ChartContainer{
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .footercontent{
+  position: fixed;
+    width: 100%;
+    margin-left: 0;
+  }
+  .login_div{
+    margin: 4% 37%;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 80%;
+    height: auto;
+    margin: 4% 20%;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    height: auto;
+    margin: 4% 38%;
+  }
+}
+@media(min-width: 859px) {
+  .sidenav{
+    display: flex;
+  }
+}
+@media(max-width: 858px)
+{ 
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  .closebtn, .menu{
+    display: block;
+  }
+  .sidenav {
+    display: none;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background: #ecf0f3;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav a:hover {
+    color: black;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  .btn_style{
+    margin-right: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .menu{
+    width: 40px;
+    padding: 1%;
+    background: #ecf0f3;
+    border-radius: 20px;
+    box-shadow: 13px 13px 25px #cdced1,
+              -13px -13px 25px #ffffff;
+              transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 15px;}
+    #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .ChartContainer{
+    width: 80%;
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .footercontent{
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .login_div{
+    margin: 4% auto;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 90%;
+    margin: 4% auto;
+    height: auto;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    margin: 4% auto;
+    height: auto;
+  }
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .ChartContainer{
+    width: 70%;
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .footercontent{
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+
+  }
+  .login_div{
+    margin: 4% auto;
+    width: 350px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 90%;
+    margin: 3% auto;
+    height: auto;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    margin: 4% auto;
+    height: auto;
+  }
+}
