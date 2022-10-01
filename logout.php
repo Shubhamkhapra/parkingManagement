@@ -1,4 +1,4 @@
-
+<?php ob_start();?>
 <?php 
 
     include("./config/connection.php");
@@ -7,7 +7,8 @@
 
     session_destroy();
 
-    header("location:".$url);
+    header("location:./index.php");
+     ob_end_flush();
     //.'admin/login.php'
 
 

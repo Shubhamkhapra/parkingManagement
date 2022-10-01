@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -8,7 +9,8 @@ if(isset($_SESSION['UserType']))
     
     $check = $_SESSION['UserType'];
     if($check == "Regular")
-    header("location:".$url."token.php");
+    header("location:./token.php");
+    ob_end_flush();
   }
 ?>
 

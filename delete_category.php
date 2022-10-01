@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -22,12 +23,14 @@ include "$path";
             }else {
                 echo "<script> alert('Delete Successful')</script>";
                 //header add 
-                header('location:'.$url.'manage_category.php');
+                header('location:./manage_category.php');
+                ob_end_flush();
             }
         }else{
             echo "<script> alert('Delete Not Successful')</script>";
             //header add 
-            header('location:'.$url.'manage_category.php');
+            header('location:./manage_category.php');
+            ob_end_flush();
         }
     ?>
 

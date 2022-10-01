@@ -1,11 +1,9 @@
+<?php ob_start();?>
 <?php
 
-include './config/connection.php'; 
-
+include 'config/connection.php'; 
 
 if (isset($_SESSION['login'])) {
-   
-  
     unset($_SESSION["login"]);
 }
 
@@ -13,20 +11,21 @@ if(isset($_SESSION['UserType']))
 {
   
   $check = $_SESSION['UserType'];
+  
   if($check == "Regular")
-  header("location:".$url."token.php");
+  header("location:./token.php");
+  ob_end_flush();
 }
-
 if(isset($_SESSION['UserType']))
 {
   
   $check = $_SESSION['UserType'];
   if($check == "Admin")
-  header("location:".$url."dashboard.php");
+  header("location:./dashboard.php");
+  ob_end_flush();
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,14 +77,14 @@ if(isset($_SESSION['UserType']))
                 $_SESSION['login'] = "<div class='text-success'> Login Successful</div>";
                 $_SESSION["UserType"] = $row['UserType'];
                 $_SESSION['user'] = $row['Name'];
-                header("location:".$url."dashboard.php");	
+                header("location:./dashboard.php");	
             }
 
             if($row['UserType'] == 'Regular'){
                 $_SESSION['login'] = "<div class='text-success'> Login Successful</div>";
                 $_SESSION["UserType"] = $row['UserType'];
                 $_SESSION['user'] = $row['Name'];
-                header("location:".$url."token.php");	
+                header("location:./token.php");	ob_end_flush();
             }
             // echo "<script>
             // window.alert('Verified');
@@ -95,7 +94,7 @@ if(isset($_SESSION['UserType']))
             echo "<script>
             window.alert('Invalid Password');
             </script>";
-            header('location:'.$url.'index.php');
+            header('location:./index.php');ob_end_flush();
         }
     }
     ?>

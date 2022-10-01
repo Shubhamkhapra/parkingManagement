@@ -32,36 +32,36 @@ include "$path";
 ?>
   
 <div class="vehicle_cat">
-      <div class="logo logoimage">
-        <img src="./images/LOGGGO.jpeg" alt="image" id="image">
-      </div>
-    <div class="title">Token Generate</div>
-              <form action="token.php" method="POST">
-              <div class="fields">
-                <div class="username"><input type="text" name="Vehicle_Number" class="user-input" placeholder="Vehicle Number" /></div>
+  <div class="logo logoimage">
+    <img src="./images/LOGGGO.jpeg" alt="image" id="image">
+  </div>
+  <div class="title">Token Generate</div>
+  <form action="token.php" method="POST">
+  <div class="fields">
+    <div class="username"><input type="text" name="Vehicle_Number" class="user-input" placeholder="Vehicle Number" /></div>
 
 
-                <div class="username">
-                  <select class="Cat_dropdown" name="Name">  
-                    <!-- <option value="">Category</option> -->
-                    <?php
-                        $qr = "Select * from `tbl_vehicle_cat`";
-                        $qr_r = mysqli_query($conn,$qr);
-                        $var = 0;
-                        if($qr_r->num_rows> 0){
-                          while($optionData= mysqli_fetch_array($qr_r)){
-                          // $option =$optionData['Name'];
-                            $var =  $optionData['Name'];
-                      ?>
-                      <option  value="<?php print_r( $var) ; ?>">  <?php print_r( $var) ; ?></option> 
-                    <?php
-                      }}
-                    ?>
-                  </select></div>
-                    
-              <button type="submit" name="submit" class="signin-button">Generate Token</button>
-              
-              </form>
+    <div class="username">
+      <select class="Cat_dropdown" name="Name">  
+        <!-- <option value="">Category</option> -->
+        <?php
+            $qr = "Select * from `tbl_vehicle_cat`";
+            $qr_r = mysqli_query($conn,$qr);
+            $var = 0;
+            if($qr_r->num_rows> 0){
+              while($optionData= mysqli_fetch_array($qr_r)){
+              // $option =$optionData['Name'];
+                $var =  $optionData['Name'];
+          ?>
+          <option  value="<?php print_r( $var) ; ?>">  <?php print_r( $var) ; ?></option> 
+        <?php
+          }}
+        ?>
+      </select></div>
+        
+  <button type="submit" name="submit" class="signin-button">Generate Token</button>
+  
+  </form>
     </div>
 </div>
 

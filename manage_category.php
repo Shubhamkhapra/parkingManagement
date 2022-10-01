@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -8,7 +9,9 @@ if(isset($_SESSION['UserType']))
     
     $check = $_SESSION['UserType'];
     if($check == "Regular")
-    header("location:".$url."token.php");
+    header("location:./token.php");
+    ob_end_flush();
+    
   }
 ?>
 
@@ -38,7 +41,7 @@ if(isset($_SESSION['UserType']))
                         <td>
                             <!-- <button class="btn-danger btn"> -->
                     
-                            <a href="delete_category.php?id=<?php echo $res[0]; ?>" class="text-danger"> 
+                            <a href="./delete_category.php?id=<?php echo $res[0]; ?>" class="text-danger"> 
                             <span class="material-symbols-outlined">
                                 delete
                                 </span>
@@ -46,7 +49,7 @@ if(isset($_SESSION['UserType']))
             
                             <!-- </button>  -->
                               <!-- <button class="btn-primary btn">  -->
-                            <a href="update_category.php?id=<?php echo $res[0]; ?>" class="text-warning"> <span class="material-symbols-outlined">edit </span>  </a> 
+                            <a href="./update_category.php?id=<?php echo $res[0]; ?>" class="text-warning"> <span class="material-symbols-outlined">edit </span>  </a> 
                         
                              <!-- </button> -->
                         </td>

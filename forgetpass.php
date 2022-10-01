@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +30,8 @@
             echo "<script> 
             window.alert('Password successfully changed');
             </script>";
-            header('location:'.$url.'index.php');
+            header('location:./index.php');
+             ob_end_flush();
         }
      } 
      else 
@@ -37,7 +39,7 @@
          echo "<script>
          window.alert('Invalid User');
          </script>";
-         header('location:'.$url.'forgetpass.php');
+         header('location:./forgetpass.php');
      }
     }
     ?>

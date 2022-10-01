@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -16,12 +17,13 @@ include "$path";
 
         if($result){
             header('location:display.php');
+            ob_end_flush();
         }else{
-            die(mysqli_error($conn));
+            header('location:display.php');
+            ob_end_flush();
         }
     }
     ?>
-
 
 <!-- update vehicle category -->
 <div class="vehicle_cat_update">
@@ -36,7 +38,7 @@ include "$path";
                 <th> Vehicle Number </th>
                 <th> Rate </th>
                 <th> Total Time </th>
-                <th> Action </th>
+                 <th> Action </th>
               </tr>
           <?php
             
@@ -72,7 +74,8 @@ include "$path";
                       
         </table>
     </div>
-     <script>
+    
+    <script>
     function myalert(){
         if(confirm("Do You Really Want To Delete?") == true){
             alert("Data deleted");

@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -8,7 +9,8 @@ if(isset($_SESSION['UserType']))
     
     $check = $_SESSION['UserType'];
     if($check == "Regular")
-    header("location:".$url."token.php");
+    header("location:./token.php");
+    ob_end_flush();
   }
 ?>
 
@@ -37,7 +39,7 @@ if(isset($_SESSION['UserType']))
     ?>
         <!-- Add vehicle category  -->
         <div class="vehicle_cat">
-            <div class="col-12" id="title">Add Vehicle Category</div>
+            <div class="col-12" id="title">Update Vehicle Category</div>
             <form class="row g-3 fields" action="" method="POST" enctype="multipart/form-data ">
                 <div class="col-12 veh_Type">
                     <input type="text" value="<?php echo $id ; ?>" readonly>
@@ -73,8 +75,10 @@ if(isset($_SESSION['UserType']))
             $insertExc = mysqli_query($conn, $q);
             if($insertExc == true) {
                 echo "<script> alert ('Vehicle Category Add Successful')</script>";
+                header('location:./manage_category.php');
+                 ob_end_flush();
             }else {
-                echo "<script> alert ('Vehicle Category Not add ')</script>";
+                echo "<script> alert ('Vehicle  Category Not update ')</script>";
             }
         }
 

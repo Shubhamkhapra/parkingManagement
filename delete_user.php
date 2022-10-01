@@ -1,7 +1,18 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
 include "$path";
+
+if(isset($_SESSION['UserType']))
+  {
+    
+    $check = $_SESSION['UserType'];
+    if($check == "Regular")
+    header("location:./token.php");
+    ob_end_flush();
+  }
+
 ?>
 
     <?php
@@ -15,16 +26,20 @@ include "$path";
             //check quey execute or not
             if($deleteUser==true){
                 echo "<script> alert('Delete Successful')</script>";
-                header('location:'.$url.'manage_user.php');
+                header('location:./manage_user.php');
+                 ob_end_flush();
             }else {
                 echo "<script> alert('Delete  Not Successful')</script>";
                 //header add 
-                header('location:'.$url.'manage_user.php');
+                header('location:./manage_user.php');
+                 ob_end_flush();
+                
             }
         }else{
             echo "<script> alert('Delete Not Successful')</script>";
             //header add 
-            header('location:'.$url.'manage_user.php');
+            header('location:./manage_user.php');
+             ob_end_flush();
         }
     ?>
 

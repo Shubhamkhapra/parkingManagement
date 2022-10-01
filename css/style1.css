@@ -1,11 +1,14 @@
 .login-div {
     width:430px;
     height: 700px;
+    margin: auto;
     padding: 60px 35px 35px 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border-radius: 40px;
     background: #ecf0f3;
     box-shadow: 13px 13px 20px #cbced1,
-                -13px -13px 20px #ffffff;
+        -13px -13px 20px #ffffff;
   }
   .Cat_dropdown{
     border: none;
@@ -99,3 +102,223 @@
     color:#aaa;
     font-size: 15px;
   }
+  
+  
+@media(min-width:1240px){
+  .ChartContainer{
+    column-gap: 50px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .footercontent{
+    width: 100%;
+    margin-left: 0;
+  }
+  .vehicle_cat_update{
+    height: auto;
+  }
+  .vehicle_cat{
+    height: auto;
+  }
+  
+}
+
+@media(max-width:1240px){
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 15px;}
+  .sidenav{
+    width:15%;
+  }
+  #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .ChartContainer{
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .footercontent{
+    width: 100%;
+    margin-left: 0;
+  }
+  .login_div{
+    margin: 4% 37%;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 80%;
+    height: auto;
+    margin: 4% 20%;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    height: auto;
+    margin: 4% 38%;
+  }
+}
+@media(min-width: 859px) {
+  .sidenav{
+    display: flex;
+  }
+}
+@media(max-width: 858px)
+{ 
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  .closebtn, .menu{
+    display: block;
+  }
+  .sidenav {
+    display: none;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background: #ecf0f3;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav a:hover {
+    color: black;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  .btn_style{
+    margin-right: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .menu{
+    width: 40px;
+    padding: 1%;
+    background: #ecf0f3;
+    border-radius: 20px;
+    box-shadow: 13px 13px 25px #cdced1,
+              -13px -13px 25px #ffffff;
+              transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 15px;}
+    #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .ChartContainer{
+    width: 80%;
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .footercontent{
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .login_div{
+    margin: 4% auto;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 90%;
+    margin: 4% auto;
+    height: auto;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    margin: 4% auto;
+    height: auto;
+  }
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .ChartContainer{
+    width: 70%;
+    column-gap: 20px;
+    row-gap: 40px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  #totalRegistration{
+    width:auto;
+  }
+  #Today{
+    width: auto;
+  }
+  #Yesterday{
+    width: auto;
+  }
+  #Week{
+    width: auto;
+  }
+  .footercontent{
+    width: 100%;
+    margin-left: 0;
+
+  }
+  .login_div{
+    margin: 4% auto;
+    width: 350px;
+    transition: all 500ms cubic-bezier(0.25, 0.1, 0, 1.52);
+  }
+  .vehicle_cat_update{
+    width: 90%;
+    margin: 3% auto;
+    height: auto;
+    overflow: auto;
+  }
+  #tabledata{
+    margin: 0 auto;
+    width: auto;
+  }
+  .vehicle_cat{
+    margin: 4% auto;
+    height: auto;
+  }
+}

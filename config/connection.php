@@ -12,10 +12,10 @@ session_start();
 // $url = "http://myphp.com/parkingManagement/";
 
 $dsn = 'localhost';
-$user = 'id19568548_team2';
-$password = 'Thecodeofduty2@';
-$DB_NAME_MY = 'id19568548_parkingmanagement';
-$url = "https://parkingmanagementthecodeofduty.000webhostapp.com/";
+$user = "id19568548_team2";
+$password = "5cHABdfHy3m*ky2!";
+$DB_NAME_MY = "id19568548_parkingmanagement";
+$url = "";
 $conn = mysqli_connect($dsn, $user, $password) ;
 	if (mysqli_connect_errno())
 		{

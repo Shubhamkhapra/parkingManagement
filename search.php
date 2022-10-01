@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!-- Menu bar import  -->
 <?php
 $path = "./Menu.php";
@@ -50,7 +51,7 @@ if(isset($_POST['submit'])){
                             <!-- <button class="btn-danger btn"> -->
                     <?php
                           echo '
-                          <a href="search.php?checkoutid='.@$id.'" class="text-danger"> 
+                          <a href="./search.php?checkoutid='.@$id.'" class="text-danger"> 
                             <span class="material-symbols-outlined">check</span>
                             </a>'; ?>
                         </td>
@@ -96,15 +97,15 @@ if(isset($_POST['submit'])){
                               //  echo $final;
                                echo "<br>";
                                $sql_q = "UPDATE `tbl_parking` SET `Out_Time`='$Out_Time', `Total_Time` = '$final',`Total_Amount` = '$Rate1'   WHERE `id` = $id1";
-                               echo $sql_q;
+                               
                               //  yha dikkat aari
                                
                                $response = mysqli_query($conn,$sql_q);
                                
-                               echo $id1;
-                               echo $final;
+                               // $id1;
+                               //echo $final;
                                if($response){
-                                      echo"doneee";
+                                      //echo"doneee";
                                     }else{
                                       // die(mysqli_error($conn));
                                     }
